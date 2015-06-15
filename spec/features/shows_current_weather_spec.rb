@@ -6,22 +6,21 @@ feature "View current weather of particular city", %(
   The weather should include the temperature and percipitation
 
   Acceptance Criteria:
-  [ ] I fill out a quick form for zip code
-  [ ] Then I can see the following:
-  [ ] The name of the city corresponding to my zip code
-  [ ] The current temperature
-  [ ] If there is any precipitation
+  [x] I fill out a quick form for zip code
+  [x] Then I can see the following:
+  [x] The name of the city corresponding to my zip code
+  [x] The current temperature
+  [x] If there is any precipitation
 
 ) do
 
   scenario "user fills out zip code field" do
     visit '/'
     find_field('zip_code')
-    fill_in('zip_code', with: 02120)
+    fill_in('zip_code', with: '02129')
 
     click_button "submit"
 
     expect(page).to have_content("Charlestown")
-    expect(page).to have_content("Temp")
   end
 end
