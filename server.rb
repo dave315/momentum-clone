@@ -48,7 +48,7 @@ end
 
 ############ WEATHER API METHODS ###########
 def get_weather
-  HTTParty.get("http://api.openweathermap.org/data/2.5/weather?zip=#{@weather},us")
+  HTTParty.get("http://api.openweathermap.org/data/2.5/weather?zip=#{current_user.zip_code},us")
 end
 
 def weather_icon
@@ -61,13 +61,15 @@ def degrees_in_fahrenheit
 end
 
 
-############## MY GET REQUESTS ################
+############## MY HTTP REQUESTS ################
 get '/' do
+  redirect "/auth/github" unless current_user.present?
   erb :index
 end
 
 post "/" do
-  @weather = params[:zip_code]
+  current_user.zip_code = params[:zip_code]
+  current_user.save
   erb :index
 end
 

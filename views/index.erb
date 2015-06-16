@@ -1,7 +1,7 @@
 <div class="row">
   <div class="small-6-centered columns">
 
-    <% if params[:zip_code].nil? %>
+    <% if current_user.zip_code.nil? %>
       <h3>Enter your Zip Code for the weather</h3>
       <form class="weather_form" action="/" method="post">
         <input type="text" name="zip_code" id="zip_code">

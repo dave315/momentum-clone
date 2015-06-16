@@ -8,6 +8,31 @@
     background-size: cover;
 }
 
+*:not(body):not(html) {
+  box-sizing:border-box;
+  border:1px dashed #000;
+}
+
+
+
 h3, p {
   color: white;
+}
+
+h1 a{
+  color: white;
+}
+
+.button {
+  background-color: rgba(0,0,0,0);
+  border: 2px solid white;
+}
+
+.button:hover{
+  background-color: #efd56b;
+  border: 2px solid white;
+}
+
+h1 a:hover {
+  color: #efd56b;
 }
