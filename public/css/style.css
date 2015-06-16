@@ -7,3 +7,7 @@
     margin:0;padding:0;
     background-size: cover;
 }
+
+h3, p {
+  color: white;
+}

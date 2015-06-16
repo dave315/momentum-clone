@@ -10,6 +10,20 @@
 
   <body>
     <div id="banner">
+      <div class="small-6 medium-12 small-centered columns">
+        <div class="nav-bar right">
+         <ul class="button-group">
+           <% if current_user.present? %>
+             <li><a href="/sign_out" class="button small round">Sign Out</a></li>
+             <% else %>
+               <li><a href="/auth/github" class="button small round">Sign In</a></li>
+            <% end %>
+          </ul>
+        </div>
+          <h1><a href="/">Dave Simel</a><small></small></h1>
+          <hr/>
+      </div>
+
     <% flash.keys.each do |type| %>
       <div data-alert class="flash <%= type %> alert-box radius">
         <%= flash[type] %>
@@ -24,7 +38,7 @@
         </div>
       </div>
     </div>
-  </div>
+
 
     <script src="/js/vendor/jquery.js"></script>
     <script src="/js/foundation.min.js"></script>
