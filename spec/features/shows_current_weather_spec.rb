@@ -15,6 +15,14 @@ feature "View current weather of particular city", %(
 ) do
 
   scenario "user fills out zip code field" do
+    user = User.create!(provider: 'github',
+    uid: 1,
+    email: 'user@example.com',
+    username: 'user1',
+    avatar_url: 'http:user.img')
+
+    sign_in_as(user)
+    
     visit '/'
     find_field('zip_code')
     fill_in('zip_code', with: '02129')

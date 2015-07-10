@@ -10,6 +10,10 @@ require 'sinatra/reloader'
 require_relative 'config/application'
 require_relative './models/user'
 
+###############NOTES######################
+#*https://chrome.google.com/webstore/detail/new-tab-redirect/icpgjfneehieebagbmdbhnlpiopdcmna# <-- for custom new tab
+##########################################
+
 Dotenv.load
 
 Dir['momentum-clone/**/*.rb'].each { |file| require_relative file }
@@ -63,14 +67,24 @@ end
 
 ############## MY HTTP REQUESTS ################
 get '/' do
-  redirect "/auth/github" unless current_user.present?
+  redirect "sign-in" unless current_user.present?
   erb :index
 end
 
-post "/" do
+#post to /zip-codes & validate
+post '/' do
+  # if params[:zip_code].blank?
+  #   current_user.errors.add(:zip_code, "can't be blank")
+  # end
   current_user.zip_code = params[:zip_code]
   current_user.save
+
+  #redirect and flash notification about success
   erb :index
+end
+
+get "/sign-in" do
+  erb :sign_in
 end
 
 ############ OMNI AUTH REQUESTS ###############
