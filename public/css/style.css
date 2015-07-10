@@ -39,3 +39,7 @@ h1 a{
 h1 a:hover {
   color: #efd56b;
 }
+
+.greeting {
+  margin-top: 200px;
+}

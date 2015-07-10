@@ -20,6 +20,16 @@ Dir['momentum-clone/**/*.rb'].each { |file| require_relative file }
 
 enable :sessions
 
+def greeting
+  if Time.now.hour < 12
+    "Good Morning, #{current_user.username}"
+  elsif Time.now.hour.between?(12, 9)
+    "Good Evening, #{current_user.username}"
+  else
+    "Have a good night, #{current_user.username}"
+  end
+end
+
 ########### OMNI AUTH HELPERS #############
 helpers do
   def current_user
